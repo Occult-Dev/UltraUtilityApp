@@ -1,0 +1,130 @@
+<html>
+<head>
+	<title>UltraUtility</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<style type="text/css">
+	*{
+    	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+    		margin: auto;
+		}
+		#wrapper{
+			width: 320px;
+			height: 480px;
+			background-color: #EDEDED;
+		}
+		#nav{
+			height: 80px;
+			text-align: center;
+			line-height: 38px;
+			background-color: #000000;
+			border-bottom: 2px solid #00C3FF;
+		}
+		.menuItem{
+			width: 80px;
+			height: 80px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+		}
+		.menuItemA{
+			width: 80px;
+			height: 55px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+			border-bottom: 3px solid #00C3FF;
+		}
+		#start{
+			float: left;
+		}
+		#stop{
+			float: right;
+		}
+		#timer{
+			margin-top: 169;
+			text-align: center;
+			background-color: #4242F5;
+			text-shadow: 2px 2px #000000;
+			color: #FFFFFF;
+			font-weight: bold;
+			font-style: italic;
+			font-size: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="nav">
+			<a href="todolist.html"><div class="menuItem"><img src="check.png"></div></a>
+			<a href="decide.html"><div class="menuItem"><img src="decide.png"></div></a>
+			<div class="menuItemA"><img src="timerActive.png"></div>
+			<a href="settings.html"><div class="menuItem"><img src="heart.png"></div></a>
+		</div>
+		<div id="start"><img src="start.png"></div>
+		<div id="stop"><img src="stop.png"></div>
+		<div id="timer">
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+var second = 0;
+var minute = 0;
+var timerInt;
+var intIsSet = false;
+	$('#start').click(function startTimer(){
+		if(!intIsSet){
+			timerInt = setInterval(startTimer, 1000);
+			intIsSet = true;
+		};
+		second++;
+		if(second < 10){
+			switch(second){
+				case 0:
+					second='00';
+					break;
+				case 1:
+					second='01';
+					break;
+				case 2:
+					second='02';
+					break;
+				case 3:
+					second='03';
+					break;
+				case 4:
+					second='04';
+					break;
+				case 5:
+					second='05';
+					break;
+				case 6:
+					second='06';
+					break;
+				case 7:
+					second='07';
+					break;
+				case 8:
+					second='08';
+					break;
+				case 9:
+					second='09';
+					break;
+			};
+		}else if(parseInt(second) == 60){
+			minute++;
+			second=0;
+		};
+		$('#timer').html(minute+':'+second);
+	});
+	$('#stop').click(function stopTimer(){
+		clearInterval(timerInt);
+		intIsSet = false;
+		second = 0;
+		minute = 0;
+	});
+</script>
+</html>

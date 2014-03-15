@@ -1,0 +1,344 @@
+<html>
+<head>
+	<title>UltraUtility</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<style type="text/css">
+	*{
+    	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+    		margin: auto;
+		}
+		#wrapper{
+			width: 320px;
+			height: 480px;
+			background-color: #EDEDED;
+		}
+		#nav{
+			height: 80px;
+			text-align: center;
+			line-height: 38px;
+			background-color: #000000;
+			border-bottom: 2px solid #FFB405;
+		}
+		.menuItem{
+			width: 80px;
+			height: 80px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+		}
+		.menuItemA{
+			width: 80px;
+			height: 55px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+			border-bottom: 3px solid #FFB405;
+		}
+		#GO{
+			width: 200px;
+			height: 69px;
+			font-size: 40px;
+			font-weight: bold;
+			color: #FFFFFF;
+			background-color: #FFB405;
+			text-align: center;
+			margin-top: 7;
+		}
+		#countDown{
+			margin-top: 44;
+			color: #FFFFFF;
+			height: 100px;
+			background-color: #DC40FF;
+			font-size: 69px;
+			font-weight: bold;
+			text-align: center;
+		}
+		#exercise{
+			margin-top: 10;
+			color: #FFFFFF;
+			height: 100px;
+			background-color: #3CE8C9;
+			font-size: 44px;
+			font-weight: bold;
+			font-style: italic;
+			text-align: center;
+		}
+		#settings{
+			margin-left: 150;
+			margin-top: 33;
+		}
+		#settingsMenu{
+			background-color: #000000;
+			color: #FFFFFF;
+			font-weight: bold;
+			font-size: 33px;
+			width: 320px;
+			height: 400;
+			text-align: center;
+			font-style: italic;
+		}
+		.hide{
+			display: none;
+		}
+		#settingsMenu img{
+			margin-left: 10;
+			margin-top: 90;
+		}
+		#selectType{
+			margin-left: 14;
+			margin-top: 10;
+		}
+		#selectType a{
+			margin-right: 15;
+			background-color: #E31B1B;
+			color: white;
+			text-decoration: none;
+			font: 16px Tahoma;
+			font-weight: bold;
+			padding: 3px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="nav">
+			<a href="todolist.html"><div class="menuItem"><img src="check.png"></div></a>
+			<a href="decide.html"><div class="menuItem"><img src="decide.png"></div></a>
+			<a href="timer.html"><div class="menuItem"><img src="timer.png"></div></a>
+			<div class="menuItemA"><img src="heartActive.png"></div>
+		</div>
+		<div id="notSettings">
+		<div id="GO">GO</div>
+		<div id="selectType">
+			<a href="#" onclick="workoutSelect(1);">CARDIO</a>
+			<a href="#" onclick="workoutSelect(2);">NEUTRAL</a>
+			<a href="#" onclick="workoutSelect(3);">STRENGTH</a>
+		</div>
+		<div id="countDown">
+		</div>
+		<div id="exercise">
+		</div>
+		<div id="settings">
+			<img src="settings.png" onclick="settingsMenuFunk();">
+		</div>
+		</div>
+		<div id="settingsMenu" class="hide">
+			<br /><br />
+			<p onclick="changeE();">Change Exercises</p>
+			<br /><br /><br />
+			<p onclick="changeT();">Change Times</p>			
+			<img src="settingsActive.png" onclick="settingsMenuFunk();">
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var seconds = 60;
+	var cdInterval;
+	var currentExercise = 0;
+	var exercise = 'WARMUP RUN';
+	var num = 1;
+	var e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13;
+	var t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13;
+	function workoutSelect(type){
+		if(type == 1){
+			e1 = 'stretch';
+			e2 = 'LIFT';
+			e3 = 'FULL LIFT';
+			e4 = 'LIFT';
+			e5 = 'FULL LIFT';
+			e6 = 'SQUATS';
+			e7 = 'JUMPING JACKS';
+			e8 = 'BURPEES';
+			e9 = 'PUSHUPS';
+			e10 = 'BURPEES';
+			e11 = 'PUSHUPS';
+			e12 = 'LIFT';
+			e13 = 'BURST';
+			t1 = 60;
+			t2 = 80;
+			t3 = 120;
+			t4 = 80;
+			t5 = 120;
+			t6 = 30;
+			t7 = 30;
+			t8 = 60;
+			t9 = 60;
+			t10 = 30;
+			t11 = 80;
+			t12 = 180;
+			t13 = 120;
+		}else if(type == 2){
+			e1 = 'DASH';
+			e2 = 'stretch';
+			e3 = 'FULL LIFT';
+			e4 = 'LIFT';
+			e5 = 'RUN';
+			e6 = 'SQUATS';
+			e7 = 'JUMPING JACKS';
+			e8 = 'BURPEES';
+			e9 = 'PUSHUPS';
+			e10 = 'CRUNCHES';
+			e11 = 'BURPEES';
+			e12 = 'LIFT';
+			e13 = 'BIKE';
+			t1 = 30;
+			t2 = 60;
+			t3 = 60;
+			t4 = 60;
+			t5 = 120;
+			t6 = 60;
+			t7 = 60;
+			t8 = 60;
+			t9 = 30;
+			t10 = 60;
+			t11 = 60;
+			t12 = 120;
+			t13 = 600;
+		}else if(type == 3){
+			e1 = 'DASH';
+			e2 = 'stretch';
+			e3 = 'JUMPING JACKS';
+			e4 = 'RUN';
+			e5 = 'JUMPING JACKS';
+			e6 = 'DASH';
+			e7 = 'DASH';
+			e8 = 'BURPEES';
+			e9 = 'SQUATS';
+			e10 = 'DASH';
+			e11 = 'STAIRS';
+			e12 = 'RUN';
+			e13 = 'BIKE';
+			t1 = 30;
+			t2 = 60;
+			t3 = 60;
+			t4 = 120;
+			t5 = 60;
+			t6 = 80;
+			t7 = 90;
+			t8 = 70;
+			t9 = 60;
+			t10 = 90;
+			t11 = 120;
+			t12 = 180;
+			t13 = 600;
+		}
+	}
+	function settingsMenuFunk(){
+		num++;
+		if(num % 2 == 0){
+			document.getElementById('notSettings').style.display = 'none';
+			document.getElementById('settingsMenu').style.display = 'block';
+		}else{
+			document.getElementById('notSettings').style.display = 'block';
+			document.getElementById('settingsMenu').style.display = 'none';
+		}
+	};
+	$('#GO').click(function startCountDown(){
+		cdInterval = setInterval(countDown,1000);
+	});
+	function countDown(){
+		$('#wrapper').css('background-color', '#EDEDED');
+		seconds--;
+		if(seconds == 0){
+			endCountDown();
+		}
+		$('#countDown').html(seconds);
+		$('#exercise').html(exercise);
+	}
+	function endCountDown(){
+		window.clearInterval(cdInterval);
+		$('#wrapper').css('background-color', '#FF0000');
+		currentExercise++;
+		switch(currentExercise){
+			case 1:
+				exercise = e1;
+				seconds = t1;
+				break;
+			case 2:
+				exercise = e2;
+				seconds = t2;
+				break;
+			case 3:
+				exercise = e3;
+				seconds = t3;
+				break;
+			case 4:
+				exercise = e4;
+				seconds = t4;
+				break;
+			case 5:
+				exercise = e5;
+				seconds = t5;
+				break;
+			case 6:
+				exercise = e6;
+				seconds = t6;
+				break;
+			case 7:
+				exercise = e7;
+				seconds = t7;
+				break;
+			case 8:
+				exercise = e8;
+				seconds = t8;
+				break;
+			case 9:
+				exercise = e9;
+				seconds = t9;
+				break;
+			case 10:
+				exercise = e10;
+				seconds = t10;
+				break;
+			case 11:
+				exercise = e11;
+				seconds = t11;
+				break;
+			case 12:
+				exercise = e12;
+				seconds = t12;
+				break;
+			case 13:
+				exercise = e13;
+				seconds = t13;
+				break;
+		};
+	};
+	function changeE(){
+		e1 = prompt('Enter Exercise 1');
+		e2 = prompt('Enter Exercise 2');
+		e3 = prompt('Enter Exercise 3');
+		e4 = prompt('Enter Exercise 4');
+		e5 = prompt('Enter Exercise 5');
+		e6 = prompt('Enter Exercise 6');
+		e7 = prompt('Enter Exercise 7');
+		e8 = prompt('Enter Exercise 8');
+		e9 = prompt('Enter Exercise 9');
+		e10 = prompt('Enter Exercise 10');
+		e11 = prompt('Enter Exercise 11');
+		e12 = prompt('Enter Exercise 12');
+		e13 = prompt('Enter Exercise 13');
+		alert('Exercises Will Be Reset When You Leave This Timer');
+	}
+	function changeT(){
+		t1 = prompt('Enter Time For Exercise 1 ('+e1+')');
+		t2 = prompt('Enter Time For Exercise 2 ('+e2+')');
+		t3 = prompt('Enter Time For Exercise 3 ('+e3+')');
+		t4 = prompt('Enter Time For Exercise 4 ('+e4+')');
+		t5 = prompt('Enter Time For Exercise 5 ('+e5+')');
+		t6 = prompt('Enter Time For Exercise 6 ('+e6+')');
+		t7 = prompt('Enter Time For Exercise 7 ('+e7+')');
+		t8 = prompt('Enter Time For Exercise 8 ('+e8+')');
+		t9 = prompt('Enter Time For Exercise 9 ('+e9+')');
+		t10 = prompt('Enter Time For Exercise 10 ('+e10+')');
+		t11 = prompt('Enter Time For Exercise 11 ('+e11+')');
+		t12 = prompt('Enter Time For Exercise 12 ('+e12+')');
+		t13 = prompt('Enter Time For Exercise 13 ('+e13+')');
+		alert('Times Will Be Reset When You Leave This Timer');
+	}
+</script>
+</html>

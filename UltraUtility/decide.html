@@ -1,0 +1,115 @@
+<html>
+<head>
+	<title>UltraUtility</title>
+	<style type="text/css">
+	*{
+    	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+    		margin: auto;
+		}
+		#wrapper{
+			width: 320px;
+			height: 480px;
+			background-color: #EDEDED;
+		}
+		#nav{
+			height: 80px;
+			text-align: center;
+			line-height: 38px;
+			background-color: #000000;
+			border-bottom: 2px solid #28E010;
+		}
+		.menuItem{
+			width: 80px;
+			height: 80px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+		}
+		.menuItemA{
+			width: 80px;
+			height: 55px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+			border-bottom: 3px solid #28E010;
+		}
+		#yon{
+			background-color: #8A54FF;
+			font-size: 50px;
+			font-weight: bold;
+			text-shadow: 2px 2px #000000;
+			margin-left: 10;
+			margin-right: 10;
+			width: 300;
+			margin-bottom: 70;
+			margin-top: 50;
+			text-align: center;
+			color: #FFFFFF;
+		}
+		#rad{
+			text-align: center;
+			color: #FFFFFF;
+			background-color: #FF5100;
+			font-size: 50px;
+			font-weight: bold;
+			text-shadow: 2px 2px #000000;
+			margin-left: 10;
+			margin-right: 10;
+			width: 300;
+			margin-bottom: 70;
+			margin-top: 50;
+		}
+		#hot{
+			background-color: #00EB4A;
+			font-size: 50px;
+			font-weight: bold;
+			text-shadow: 2px 2px #000000;
+			margin-left: 10;
+			margin-right: 10;
+			width: 300;
+			margin-bottom: 70;
+			margin-top: 50;
+			text-align: center;
+			color: #FFFFFF;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="nav">
+			<a href="todolist.html"><div class="menuItem"><img src="check.png"></div></a>
+			<a href="decide.html"><div class="menuItemA"><img src="decideActive.png"></div></a>
+			<a href="timer.html"><div class="menuItem"><img src="timer.png"></div></a>
+			<a href="settings.html"><div class="menuItem"><img src="heart.png"></div></a>
+		</div>
+		<div id="main">
+			<div id="yon"></div>
+			<div id="rad"></div>
+			<div id="hot"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var noy = Math.floor(Math.random()*2);
+	var dar = Math.floor((Math.random()*6)+1);
+	var toh = Math.floor(Math.random()*2);
+
+	if(noy == 0){
+		noy = 'NO';
+	}else{
+		noy = 'YES';
+	};
+	if(toh == 0){
+		toh = 'HEADS';
+	}else{
+		toh = 'TAILS';
+	};
+	document.getElementById('yon').innerHTML = noy;
+	document.getElementById('rad').innerHTML = dar;
+	document.getElementById('hot').innerHTML = toh;
+</script>
+</html>

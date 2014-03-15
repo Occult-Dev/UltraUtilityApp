@@ -1,0 +1,133 @@
+<html>
+<head>
+	<title>UltraUtility</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<style type="text/css">
+	*{
+    	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+    		margin: auto;
+		}
+		body{
+			background-color: #EDEDED;
+		}
+		#wrapper{
+			width: 320px;
+			height: 480px;
+			background-color: #EDEDED;
+		}
+		#nav{
+			height: 80px;
+			text-align: center;
+			background-color: #000000;
+			border-bottom: 2px solid #ED0909;
+			top: 0;
+			width: 320px;
+		}
+		.menuItem{
+			width: 80px;
+			height: 80px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+		}
+		.menuItemA{
+			width: 80px;
+			height: 55px;
+			float: left;
+			margin-top: 22px; 
+			vertical-align: middle;
+			border-bottom: 3px solid #ED0909;
+		}
+		#description{
+			margin-left: 60; 
+			width: 200px;
+		}
+		#add{
+			margin-left: 69;
+			margin-right: 118;
+		}
+		#alert strong{
+			color: #D60D28;
+		}
+		#alert{
+			text-align: center;
+		}
+		.strike{
+			text-decoration: line-through;
+		}
+		li{
+			color: #FFFFFF;
+			font-weight: bold;
+			font-size: 22px;
+			margin-top: 7;
+			margin-left: -30;
+			width: 300px;
+		}
+		li:nth-child(odd){
+			background-color: #9E42FF;
+		}
+		li:nth-child(even){
+			background-color: #F07B16;
+		}
+		#check{
+			width: 20px;
+			height: 20px;
+			margin-right: 7;
+		}
+		ul{
+			list-style-type: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="nav">
+			<div class="menuItemA"><img src="checkActive.png"></div>
+			<a href="decide.html"><div class="menuItem"><img src="decide.png"></div></a>
+			<a href="timer.html"><div class="menuItem"><img src="timer.png"></div></a>
+			<a href="settings.html"><div class="menuItem"><img src="heart.png"></div></a>
+		</div>
+		<form id="inputTask" action="#" method="POST">
+			<input id="description" name="description" type="text" />
+		</form><br />
+		<img id="add" src="plus.png"><img id="clear" src="delete.png"><br /><br /><hr />
+		<div id="list">
+			<section>
+			  <form id="form" action="#" method="POST">
+			  </form>
+			  <div id="alert"></div>
+			  <ul id="todos"></ul>
+			</section>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$('#add').click( function() {
+   var Description = $('#description').val();
+  if($("#description").val() == '') {
+    $('#alert').html("<strong>Warning!</strong> You left the to-do empty");
+    $('#alert').fadeIn().delay(2000).fadeOut();
+    return false;
+   }
+   $('#todos').prepend("<li><input id='check' name='check' type='checkbox'/>" + Description + "</li>");
+   $('#form')[0].reset();
+   $('#inputTask')[0].reset();
+   var todos = $('#todos').html();
+   localStorage.setItem('todos', todos);
+   return false;
+});
+if(localStorage.getItem('todos')) {
+$('#todos').html(localStorage.getItem('todos'));
+}
+
+$('#clear').click( function() {
+window.localStorage.clear();
+location.reload();
+return false;
+});
+</script>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap   = "http://phonegap.com/ns/1.0"	
+	version 	= "1.0.1">
+	
+    <name>UltraUtility</name>
+
+    <description>
+        The Ultimate Utility. Includes 1. To-Do List 2. Decision Maker 3. Timer 4. Workout Pal
+			--------------------------
+			Update (Version - 1.0.1):
+				-New Options Added To Workout Pal
+    </description>
+	
+	<icon src="icon.png" />
+	<preference name="orientation" value="portrait" />
+	<preference name="fullscreen" value="true" />
+	<!--
+	<preference name="splash-screen-duration" value="5000"/>
+	<gap:splash src="resources/splash.png" width="480" height="320" />
+	-->
+</widget>
